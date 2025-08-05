@@ -70,5 +70,10 @@ def view_result():
         return send_file(result_path, as_attachment=False)
     return "Result not available.", 404
 
+import os
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # use Render's port if provided
+    app.run(host='0.0.0.0', port=port, debug=True)
+
+
